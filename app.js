@@ -5,22 +5,40 @@
  */
 function createItem(item){
     const lister = document.createElement('li')
-    const ensemble = document.querySelector('ul')
-    console.log(ensemble)
-    
-    const ici = lister.innerText = item.title
-    console.log(ici)
+
     lister.classList.add("todo")
     lister.classList.add("list-group-item")
     lister.classList.add("d-flex")
     lister.classList.add("align-item-center")
-    ensemble.appendChild(lister)
+    
+    const input = document.createElement('input')
+    input.type = 'checkbox'
+    input.classList.add("form-check-input")
+    lister.append(input)
 
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    lister.insertBefore(checkbox, ici)
+    const label = document.createElement('label')
+    label.innerText = item.title
+    label.classList.add("ms-2")
+    label.classList.add("form-check-label")
+    lister.append(label)
+
+    const trash = document.createElement('label')
+    trash.classList.add("ms-auto") 
+    trash.classList.add("btn") 
+    trash.classList.add("btn-danger") 
+    trash.classList.add("btn-sm") 
+    lister.append(trash)
+
+    const poubelle = document.createElement('i')
+    poubelle.classList.add("bi-trash")
+    trash.append(poubelle)
+
 
     return lister
+}
+
+function addPoint(){
+
 }
 
 async function main(){
