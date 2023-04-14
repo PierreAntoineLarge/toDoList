@@ -20,6 +20,8 @@ function createItem(item){
     label.innerText = item.title
     label.classList.add("ms-2")
     label.classList.add("form-check-label")
+    const id = item.id
+    label.htmlFor = "todo-"+id;
     lister.append(label)
 
     const trash = document.createElement('label')
@@ -32,8 +34,6 @@ function createItem(item){
     const poubelle = document.createElement('i')
     poubelle.classList.add("bi-trash")
     trash.append(poubelle)
-
-
     return lister
 }
 
