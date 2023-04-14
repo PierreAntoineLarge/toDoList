@@ -24,11 +24,12 @@ function createItem(item){
     label.htmlFor = "todo-"+id;
     lister.append(label)
 
-    const trash = document.createElement('label')
+    const trash = document.createElement('button')
     trash.classList.add("ms-auto") 
     trash.classList.add("btn") 
     trash.classList.add("btn-danger") 
     trash.classList.add("btn-sm") 
+    trash.addEventListener("click", deleteItem)
     lister.append(trash)
 
     const poubelle = document.createElement('i')
@@ -37,8 +38,10 @@ function createItem(item){
     return lister
 }
 
-function addPoint(){
-
+function deleteItem(event){
+    /**const child = document.querySelector('li')*/
+    const child = event.target.parentNode;
+    child.parentNode.removeChild(child)
 }
 
 async function main(){
