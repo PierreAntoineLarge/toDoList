@@ -39,8 +39,7 @@ function createItem(item){
 }
 
 function deleteItem(event){
-    /**const child = document.querySelector('li')*/
-    const child = event.target.parentNode;
+    const child = document.querySelector('li')
     child.parentNode.removeChild(child)
 }
 
