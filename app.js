@@ -14,6 +14,16 @@ function createItem(item){
     const input = document.createElement('input')
     input.type = 'checkbox'
     input.classList.add("form-check-input")
+    input.addEventListener('change', function() {
+        const done = this.checked; // Récupérer l'état de la case à cocher
+        lister.setAttribute('data-done', done); // Mettre à jour l'attribut de données
+        // Ajouter ou retirer la classe "done" pour marquer l'élément comme fait ou non fait
+        if (done) {
+            lister.classList.add('done');
+        } else {
+            lister.classList.remove('done');
+        }
+    });
     lister.append(input)
 
     const label = document.createElement('label')
@@ -57,6 +67,16 @@ function addItem(text){
     const input = document.createElement('input')
     input.type = 'checkbox'
     input.classList.add("form-check-input")
+    input.addEventListener('change', function() {
+        const done = this.checked; // Récupérer l'état de la case à cocher
+        lister.setAttribute('data-done', done); // Mettre à jour l'attribut de données
+        // Ajouter ou retirer la classe "done" pour marquer l'élément comme fait ou non fait
+        if (done) {
+            lister.classList.add('done');
+        } else {
+            lister.classList.remove('done');
+        }
+    });
     newItem.append(input)
 
     const label = document.createElement('label')
@@ -111,22 +131,46 @@ async function main(){
         console.log(FormData)
     })
 
-    /**document.querySelector('form').addEventListener('submit', e => 
-        this.onSubmit(e)
-    )
+    const filters = document.querySelector('#filters')
+    const listOfItems = document.querySelector('.list-group')
 
-    /**
-     * @param { SubmitEvent } e
-     *
-    async function onSubmit(e){
-        e.preventdefault()
-        const title = new FormData(e.currentTarget).get('title').toString()
-        console.log(title)
-        console.log('tot')
-    } */
+    filters.addEventListener('click', (e) => {
+        const selectedCategory = e.target.getAttribute('data-filter');
+        const itemList = listOfItems.querySelectorAll('li');
+
+        itemList.forEach(item=> {
+            item.style.opacity = '1';
+            const doneOrNot = item.getAttribute('data-done')
+            console.log(doneOrNot)
+        if (selectedCategory == 'faite'){
+        if (doneOrNot == null && selectedCategory == 'faite') {
+            item.style.opacity = '0.2';
+            console.log('tatp')
+            } else {
+            console.log('tptp')
+            }
+        }else if (selectedCategory == 'à faire'){
+            if (doneOrNot == null && selectedCategory == 'à faire') {
+                item.style.display = 'none';
+                console.log('tptp')
+                } else {
+                    item.style.opacity = '0.2';
+                    console.log('tatp')
+                }
+        }
+
+        return itemList
+        });
+    })
 
 }
 
-
-
 main()
+
+
+
+
+
+
+
+
