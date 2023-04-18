@@ -138,11 +138,13 @@ async function main(){
     filters.addEventListener('click', (e) => {
         const selectedCategory = e.target.getAttribute('data-filter');
         const itemList = listOfItems.querySelectorAll('li');
-
+        
+        e.target.parentElement.querySelector('.active').classList.remove('active')
+        e.target.classList.add('active')
         itemList.forEach(item=> {
             item.style.opacity = '1';
             const doneOrNot = item.getAttribute('data-done')
-            console.log(doneOrNot)
+            
         if (selectedCategory == 'faite'){
         if (doneOrNot == null && selectedCategory == 'faite') {
             item.style.opacity = '0.2';
