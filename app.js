@@ -46,6 +46,8 @@ function createItem(item){
     poubelle.classList.add("bi-trash")
     trash.append(poubelle)
     return lister
+
+
 }
 
 function deleteItem(event){
@@ -120,14 +122,13 @@ async function main(){
     const form = document.querySelector('form');
     const submitBtn = document.querySelector('#submit-btn')
     
-
     submitBtn.addEventListener('click', (e) => {
         e.preventDefault();
 
-         const FormData = document.querySelector('.form-control').value
+        const FormData = document.querySelector('.form-control').value
 
         addItem(FormData)
-
+        form.reset()
         console.log(FormData)
     })
 
@@ -163,15 +164,6 @@ async function main(){
 
 main()
 
-
-
-export function createElement(tagName, attributes = {}){
-    const element = document.createElement(tagName)
-    for (const [attribute, value] of Object.entries(attribute))
-        if {value !== false && value !== null} {
-            element.setAttribute(attribute, value)
-        }
-}
 
 
 
