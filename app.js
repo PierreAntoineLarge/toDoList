@@ -102,7 +102,7 @@ function addItem(text){
 }
 
 async function main(){
-
+    /*requête api*/
     const r = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5',{
         headers: {
             Accept: 'application/json'
